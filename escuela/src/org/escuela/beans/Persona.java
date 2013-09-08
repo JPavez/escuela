@@ -20,7 +20,7 @@ public class Persona {
 	public String getNombre(){
 		return nombre;
 	}
-	public void setNombreo(String nombre){
+	public void setNombre(String nombre){
 		this.nombre = nombre;
 	}
 
