@@ -2,7 +2,7 @@ package org.escuela.beans;
 
 import java.util.Date;
 
-public class Persona{
+public class Persona implements Identificable{
 
 	private String nombre;
 	private String apellido;

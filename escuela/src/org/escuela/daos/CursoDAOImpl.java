@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.escuela.beans.Curso;
 import org.escuela.db.CountModificationsResultHandler;
+import org.escuela.db.GeneratedIdResultHandler;
 import org.escuela.db.GenericStatement;
 import org.escuela.db.ParameterPopulator;
 import org.escuela.db.ProjectableResultHandler;
@@ -24,25 +25,25 @@ public class CursoDAOImpl implements GenericDAO<Curso> {
 			public void populateParameters(PreparedStatement prepStmt) throws SQLException {
 				prepStmt.setString(1, entity.getNombre());
 			}
-		}).handler(new CountModificationsResultHandler()).run();
+		}).handler(new GeneratedIdResultHandler(entity)).run();
 	}
 
 	@Override
 	public boolean update(final Curso entity) throws SQLException {
-		String sql = "UPDATE materias SET name = ? WHERE id = ?";
+		String sql = "UPDATE cursos SET name = ? WHERE id = ?";
 		GenericStatement<Integer> genericStatement = new GenericStatement<Integer>();
 		return genericStatement.statement(sql).populator(new ParameterPopulator(){
 			@Override
 			public void populateParameters(PreparedStatement prepStmt) throws SQLException{
-				prepStmt.setLong(1, entity.getId());
-				prepStmt.setString(2, entity.getNombre());
+				prepStmt.setString(1, entity.getNombre());
+				prepStmt.setLong(2, entity.getId());
 			}
 		}).handler(new CountModificationsResultHandler()).run().intValue() > 0;
 	}
 
 	@Override
 	public boolean delete(final Curso entity) throws SQLException {
-		String sql = "DELETE FROM materias WHERE id = ?";
+		String sql = "DELETE FROM cursos WHERE id = ?";
 		GenericStatement<Integer> genericStatement = new GenericStatement<Integer>();
 		return genericStatement.statement(sql).populator(new ParameterPopulator(){
 			@Override

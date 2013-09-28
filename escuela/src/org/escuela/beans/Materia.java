@@ -2,7 +2,7 @@ package org.escuela.beans;
 
 import java.util.List;
 
-public class Materia {
+public class Materia implements Identificable{
 	private String nombre;
 	private Long id;
 	private List<Profesor> profesores;

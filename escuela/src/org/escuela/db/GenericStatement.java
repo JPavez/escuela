@@ -2,6 +2,7 @@ package org.escuela.db;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class GenericStatement<T> {
 	private String statement;
@@ -9,7 +10,7 @@ public class GenericStatement<T> {
 	private ResultHandler<T> resultHandler;
 	
 	public T run() throws SQLException{
-		PreparedStatement prepStmt = SQLiteConnectionFactory.getInstance().getConnection().prepareStatement(statement);
+		PreparedStatement prepStmt = SQLiteConnectionFactory.getInstance().getConnection().prepareStatement(statement, Statement.RETURN_GENERATED_KEYS);
 		populator.populateParameters(prepStmt);
 		return resultHandler.handleResult(prepStmt);
 	}
