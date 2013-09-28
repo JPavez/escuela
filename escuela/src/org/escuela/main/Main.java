@@ -22,7 +22,9 @@ public class Main {
 		System.out.println("2_ Borrar PERSONA");
 		System.out.println("3_ Ingresar MATERIA");
 		System.out.println("4_ Borrar MATERIA");
-		System.out.println("5_ SALIR");
+		System.out.println("5_ Ingresar CURSO");
+		System.out.println("6_ Borrar CURSO");
+		System.out.println("7_ SALIR");
 
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(
@@ -43,7 +45,7 @@ public class Main {
 					System.out.println("se ingreso curso");
 				} else if (input.equals("4")) {
 					System.out.println("se borro curso");
-				} else if (input.equals("5")) {
+				} else if (input.equals("7")) {
 					System.out.println("chau");
 				}
 			}
