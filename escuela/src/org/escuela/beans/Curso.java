@@ -2,7 +2,7 @@ package org.escuela.beans;
 
 import java.util.List;
 
-public class Curso {
+public class Curso implements Identificable{
 	private Long id;
 	private String nombre;
 	private List<Materia> materias;
