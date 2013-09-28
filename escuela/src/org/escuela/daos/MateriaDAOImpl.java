@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.escuela.beans.Materia;
 import org.escuela.db.CountModificationsResultHandler;
+import org.escuela.db.GeneratedIdResultHandler;
 import org.escuela.db.GenericStatement;
 import org.escuela.db.ParameterPopulator;
 
@@ -22,7 +23,7 @@ public class MateriaDAOImpl implements GenericDAO<Materia> {
 				prepStmt.setNull(1, Types.INTEGER);
 				prepStmt.setString(2, entity.getNombre());
 			}
-		}).handler(new CountModificationsResultHandler()).run();
+		}).handler(new GeneratedIdResultHandler<Materia>(entity)).run();
 	}
 
 	@Override

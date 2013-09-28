@@ -25,7 +25,7 @@ public class CursoDAOImpl implements GenericDAO<Curso> {
 			public void populateParameters(PreparedStatement prepStmt) throws SQLException {
 				prepStmt.setString(1, entity.getNombre());
 			}
-		}).handler(new GeneratedIdResultHandler(entity)).run();
+		}).handler(new GeneratedIdResultHandler<Curso>(entity)).run();
 	}
 
 	@Override

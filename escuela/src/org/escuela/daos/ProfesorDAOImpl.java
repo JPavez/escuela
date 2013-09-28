@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.escuela.beans.Profesor;
 import org.escuela.db.CountModificationsResultHandler;
+import org.escuela.db.GeneratedIdResultHandler;
 import org.escuela.db.GenericStatement;
 import org.escuela.db.ParameterPopulator;
 
@@ -25,7 +26,7 @@ public class ProfesorDAOImpl implements GenericDAO<Profesor>{
 				prepStmt.setString(3, entity.getApellido());
 				prepStmt.setDate(4, new java.sql.Date(entity.getFechaNacimiento().getTime()));
 			}
-		}).handler(new CountModificationsResultHandler()).run();
+		}).handler(new GeneratedIdResultHandler<Profesor>(entity)).run();
 	}
 
 	@Override
