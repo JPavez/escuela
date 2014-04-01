@@ -21,7 +21,6 @@ public class Materia implements Identificable{
 	public void setCursos(List<Curso> cursos){
 		this.cursos = cursos;
 	}
-	
 	public String getNombre(){
 		return nombre;
 	}
@@ -31,7 +30,7 @@ public class Materia implements Identificable{
 	public Long getId(){
 		return id;
 	}
-	public void setId(Long id){
-		this.id = id;
+	public void setId(Long ids){
+		this.id = ids;
 	}
 }

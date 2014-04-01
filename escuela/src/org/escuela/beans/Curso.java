@@ -8,13 +8,13 @@ public class Curso implements Identificable{
 	private List<Materia> materias;
 	
 
-	public List<Materia> getmaterias(){
+	public List<Materia> getMaterias(){
 		return materias;
 	}
+	
 	public void setProfesores(List<Materia> materias){
 		this.materias = materias;
 	}
-	
 	
 	public Long getId(){
 		return id;
