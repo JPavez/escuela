@@ -3,7 +3,6 @@ package org.escuela.beans;
 import java.util.Date;
 
 public class Persona implements Identificable{
-
 	private String nombre;
 	private String apellido;
 	private Date fechaNacimiento;

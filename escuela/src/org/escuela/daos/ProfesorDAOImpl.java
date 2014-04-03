@@ -31,7 +31,7 @@ public class ProfesorDAOImpl implements GenericDAO<Profesor>{
 
 	@Override
 	public void create(final Profesor entity) throws SQLException {
-		String sql = "INSERT INTO profesor(id, nombre, apellido, fecha_nacimiento) VALUES (NULL, ?, ?, ?)";
+		String sql = "INSERT INTO profesor(id, nombre, apellido, fecha_nacimiento) VALUES (?, ?, ?, ?)";
 		GenericStatement<Integer> genericStatement = new GenericStatement<Integer>();
 		genericStatement.statement(sql).populator(new ParameterPopulator(){
 			@Override

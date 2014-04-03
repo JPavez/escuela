@@ -56,7 +56,7 @@ public class CursoDAOImpl implements GenericDAO<Curso> {
 
 	@Override
 	public List<Curso> search(final Curso entity) throws SQLException {
-		StringBuilder sqlBuilder = new StringBuilder("SELECT * FROM cursos");
+		StringBuilder sqlBuilder = new StringBuilder("SELECT id, name FROM cursos");
 		boolean needsAnd = false;
 		if(entity!= null && entity.getId() != null){
 			sqlBuilder.append("WHERE id = ? ");

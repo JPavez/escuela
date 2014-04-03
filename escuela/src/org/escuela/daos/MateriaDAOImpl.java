@@ -8,6 +8,7 @@ import java.sql.Types;
 import java.util.List;
 
 import org.escuela.beans.Materia;
+import org.escuela.beans.Profesor;
 import org.escuela.db.CountModificationsResultHandler;
 import org.escuela.db.GeneratedIdResultHandler;
 import org.escuela.db.GenericStatement;
@@ -19,16 +20,28 @@ import com.google.common.collect.Lists;
 public class MateriaDAOImpl implements GenericDAO<Materia> {
 
 	@Override
-	public void create(final Materia entity) throws SQLException{
-		String sql = "INSERT INTO materias VALUES (?, ?)";
+	public void create(final Materia materia) throws SQLException{
+		String sql = "INSERT INTO materias (id, nombre) VALUES (?, ?)";
 		GenericStatement<Integer> genericStatement = new GenericStatement<Integer>();
 		genericStatement.statement(sql).populator(new ParameterPopulator(){
 			@Override
 			public void populateParameters(PreparedStatement prepStmt, Connection connection) throws SQLException{
 				prepStmt.setNull(1, Types.INTEGER);
-				prepStmt.setString(2, entity.getNombre());
+				prepStmt.setString(2, materia.getNombre());
 			}
-		}).handler(new GeneratedIdResultHandler<Materia>(entity)).run();
+		}).handler(new GeneratedIdResultHandler<Materia>(materia)).run();
+	}
+	
+	public void addProfesor(final Materia materia, final Profesor profesor) throws SQLException{
+		String sql = "INSERT INTO profesores_materias (id_profesor, id_materia) VALUES (?, ?)";
+		GenericStatement<Integer> genericStatement = new GenericStatement<Integer>();
+		genericStatement.statement(sql).populator(new ParameterPopulator(){
+			@Override
+			public void populateParameters(PreparedStatement prepStmt, Connection connection) throws SQLException{
+				prepStmt.setLong(1, profesor.getId());
+				prepStmt.setLong(2, materia.getId());
+			}
+		}).handler(new GeneratedIdResultHandler<Materia>(materia)).run();
 	}
 
 	@Override
