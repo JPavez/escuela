@@ -1,5 +1,6 @@
 package org.escuela.daos;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class CursoDAOImpl implements GenericDAO<Curso> {
 		GenericStatement<Integer> genericStatement = new GenericStatement<Integer>();
 		genericStatement.statement(sql).populator(new ParameterPopulator(){
 			@Override
-			public void populateParameters(PreparedStatement prepStmt) throws SQLException {
+			public void populateParameters(PreparedStatement prepStmt, Connection connection) throws SQLException {
 				prepStmt.setString(1, entity.getNombre());
 			}
 		}).handler(new GeneratedIdResultHandler<Curso>(entity)).run();
@@ -34,7 +35,7 @@ public class CursoDAOImpl implements GenericDAO<Curso> {
 		GenericStatement<Integer> genericStatement = new GenericStatement<Integer>();
 		return genericStatement.statement(sql).populator(new ParameterPopulator(){
 			@Override
-			public void populateParameters(PreparedStatement prepStmt) throws SQLException{
+			public void populateParameters(PreparedStatement prepStmt, Connection connection) throws SQLException{
 				prepStmt.setString(1, entity.getNombre());
 				prepStmt.setLong(2, entity.getId());
 			}
@@ -47,7 +48,7 @@ public class CursoDAOImpl implements GenericDAO<Curso> {
 		GenericStatement<Integer> genericStatement = new GenericStatement<Integer>();
 		return genericStatement.statement(sql).populator(new ParameterPopulator(){
 			@Override
-			public void populateParameters(PreparedStatement prepStmt) throws SQLException{
+			public void populateParameters(PreparedStatement prepStmt, Connection connection) throws SQLException{
 				prepStmt.setLong(1, entity.getId());
 			}
 		}).handler(new CountModificationsResultHandler()).run().intValue() > 0;
@@ -72,7 +73,7 @@ public class CursoDAOImpl implements GenericDAO<Curso> {
 		GenericStatement<ResultSet> genericStatement = new GenericStatement<ResultSet>();
 		ResultSet resultSet = genericStatement.statement(sqlBuilder.toString()).populator(new ParameterPopulator(){
 			@Override
-			public void populateParameters(PreparedStatement prepStmt) throws SQLException{
+			public void populateParameters(PreparedStatement prepStmt, Connection connection) throws SQLException{
 				int param = 1;
 				if(entity!= null && entity.getId() != null){
 					prepStmt.setLong(param, entity.getId());

@@ -11,7 +11,7 @@ public class GenericStatement<T> {
 	
 	public T run() throws SQLException{
 		PreparedStatement prepStmt = SQLiteConnectionFactory.getInstance().getConnection().prepareStatement(statement, Statement.RETURN_GENERATED_KEYS);
-		populator.populateParameters(prepStmt);
+		populator.populateParameters(prepStmt, SQLiteConnectionFactory.getInstance().getConnection());
 		return resultHandler.handleResult(prepStmt);
 	}
 	public GenericStatement<T> handler(ResultHandler<T> handler) {

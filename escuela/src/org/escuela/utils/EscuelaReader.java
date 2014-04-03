@@ -15,7 +15,6 @@ import org.escuela.beans.Persona;
 import org.escuela.beans.Profesor;
 import org.escuela.daos.CursoDAOImpl;
 import org.escuela.daos.GenericDAO;
-import org.escuela.daos.PersonaDAOImpl;
 
 public class EscuelaReader {
 	private BufferedReader br;
@@ -28,7 +27,6 @@ public class EscuelaReader {
 		InputStreamReader isr = new InputStreamReader(System.in);
 		br = new BufferedReader(isr);
 		cursoDao = new CursoDAOImpl();
-		personaDao = new PersonaDAOImpl();
 	}
 	public void menu(){
 		System.out.println("Bienvenido. Elija opcion a realizar:");
